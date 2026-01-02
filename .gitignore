@@ -1,0 +1,55 @@
+
+# Virtual environment
+
+venv/
+
+env/
+
+.env
+
+# Python cache
+
+__pycache__/
+
+*.py[cod]
+
+*$py.class
+
+*.so
+
+# YOLOv8 models (too large for GitHub)
+
+*.pt
+
+*.onnx
+
+*.engine
+
+# Training runs and data
+
+runs/
+
+datasets/
+
+data/evidence/
+
+# IDE
+
+.vscode/
+
+.idea/
+
+*.swp
+
+# OS files
+
+.DS_Store
+
+Thumbs.db
+
+# Logs
+
+logs/
+
+*.log
+
