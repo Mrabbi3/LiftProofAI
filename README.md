@@ -1,26 +1,4 @@
-<![CDATA[<div align="center">
-
 # 🛡️ LiftProof.Ai
-
-### Real-Time Shoplifting Detection System
-
-[![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/downloads/)
-[![YOLOv8](https://img.shields.io/badge/YOLOv8-Pose-orange.svg)](https://github.com/ultralytics/ultralytics)
-[![OpenCV](https://img.shields.io/badge/OpenCV-4.8+-green.svg)](https://opencv.org/)
-[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-
-<p align="center">
-  <img src="assets/demo.gif" alt="LiftProof.Ai Demo" width="600">
-</p>
-
-**AI-powered shoplifting detection using computer vision and behavioral analysis**
-
-[Features](#-features) • [Installation](#-installation) • [Usage](#-usage) • [How It Works](#-how-it-works) • [API](#-api) • [Contributing](#-contributing)
-
-</div>
-
----
-
 ## 📋 Overview
 
 **LiftProof.Ai** is an advanced real-time shoplifting detection system that uses YOLOv8-Pose for skeleton tracking combined with behavioral analysis algorithms to identify potential theft in retail environments. Unlike traditional object detection systems, LiftProof.Ai analyzes **human behavior patterns** to detect concealment actions before items leave the store.
@@ -79,7 +57,7 @@ LiftProof.Ai provides:
 
 ```bash
 # Clone the repository
-git clone https://github.com/YOUR_USERNAME/LiftProofAI.git
+git clone https://github.com/Mrabbi3/LiftProofAI.git
 cd LiftProofAI
 
 # Create virtual environment
@@ -92,8 +70,7 @@ pip install -r requirements.txt
 
 ### Requirements
 
-```txt
-# requirements.txt
+```
 ultralytics>=8.1.0
 opencv-python>=4.8.0
 numpy>=1.24.0
@@ -105,7 +82,6 @@ torch>=2.0.0
 The model downloads automatically on first run, or manually:
 
 ```bash
-# Downloads yolov8n-pose.pt (~6MB)
 python3 -c "from ultralytics import YOLO; YOLO('yolov8n-pose.pt')"
 ```
 
@@ -126,7 +102,6 @@ python3 liftproof_v2.py
 ### With CCTV Camera
 
 ```python
-# Edit config in the script or use command line
 python3 main.py --camera rtsp://admin:password@192.168.1.64:554/stream1
 ```
 
@@ -159,34 +134,27 @@ Once running, test these behaviors:
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│                        LiftProof.Ai                              │
+│                        LiftProof.Ai                             │
 ├─────────────────────────────────────────────────────────────────┤
-│                                                                  │
-│  ┌──────────┐    ┌──────────────┐    ┌───────────────────────┐  │
-│  │  Camera  │───▶│  YOLOv8-Pose │───▶│  Behavioral Analysis  │  │
-│  │  Input   │    │  Detection   │    │       Engine          │  │
-│  └──────────┘    └──────────────┘    └───────────────────────┘  │
-│                         │                        │               │
-│                         ▼                        ▼               │
-│                  ┌─────────────┐         ┌─────────────┐        │
-│                  │  Skeleton   │         │  Suspicion  │        │
-│                  │  Tracking   │         │   Scoring   │        │
-│                  └─────────────┘         └─────────────┘        │
-│                         │                        │               │
-│                         └──────────┬─────────────┘               │
-│                                    ▼                             │
-│                          ┌─────────────────┐                     │
-│                          │  Alert System   │                     │
-│                          │  & Notification │                     │
-│                          └─────────────────┘                     │
-│                                    │                             │
-│                    ┌───────────────┼───────────────┐             │
-│                    ▼               ▼               ▼             │
-│              ┌──────────┐   ┌──────────┐   ┌──────────┐         │
-│              │ On-Screen│   │  Mobile  │   │ Evidence │         │
-│              │  Alert   │   │   Push   │   │  Capture │         │
-│              └──────────┘   └──────────┘   └──────────┘         │
-│                                                                  │
+│                                                                 │
+│  ┌──────────┐    ┌──────────────┐    ┌───────────────────────┐ │
+│  │  Camera  │───▶│  YOLOv8-Pose │───▶│  Behavioral Analysis  │ │
+│  │  Input   │    │  Detection   │    │       Engine          │ │
+│  └──────────┘    └──────────────┘    └───────────────────────┘ │
+│                         │                        │              │
+│                         ▼                        ▼              │
+│                  ┌─────────────┐         ┌─────────────┐       │
+│                  │  Skeleton   │         │  Suspicion  │       │
+│                  │  Tracking   │         │   Scoring   │       │
+│                  └─────────────┘         └─────────────┘       │
+│                         │                        │              │
+│                         └──────────┬─────────────┘              │
+│                                    ▼                            │
+│                          ┌─────────────────┐                    │
+│                          │  Alert System   │                    │
+│                          │  & Notification │                    │
+│                          └─────────────────┘                    │
+│                                                                 │
 └─────────────────────────────────────────────────────────────────┘
 ```
 
@@ -213,26 +181,13 @@ Once running, test these behaviors:
       │   │
       7   8: Elbows
       │   │
-      9  10: Wrists (★ Primary detection points)
+      9  10: Wrists ← Primary detection points
       │   │
-     11──12: Hips (★ Primary detection points)
+     11──12: Hips ← Primary detection points
       │   │
      13  14: Knees
       │   │
      15  16: Ankles
-```
-
-### Behavior Detection Logic
-
-```python
-# Simplified detection logic
-def detect_concealment(wrist, hip, body_height):
-    distance = euclidean_distance(wrist, hip)
-    normalized = distance / body_height
-    
-    if normalized < POCKET_THRESHOLD:  # 0.12
-        return True  # Hand near pocket detected
-    return False
 ```
 
 ---
@@ -262,34 +217,6 @@ self.config = {
 }
 ```
 
-### CCTV Camera Configuration
-
-```python
-# config/settings.py
-CAMERAS = [
-    {
-        "name": "Entrance_Camera",
-        "brand": "hikvision",
-        "ip": "192.168.1.64",
-        "port": 554,
-        "username": "admin",
-        "password": "your_password",
-        "channel": 1,
-        "enabled": True
-    },
-    {
-        "name": "Checkout_Camera",
-        "brand": "dahua",
-        "ip": "192.168.1.65",
-        "port": 554,
-        "username": "admin",
-        "password": "your_password",
-        "channel": 1,
-        "enabled": True
-    }
-]
-```
-
 ### Supported CCTV Brands
 
 | Brand | RTSP URL Format |
@@ -306,33 +233,27 @@ CAMERAS = [
 
 ```
 LiftProofAI/
-├── 📄 liftproof_v2.py          # Main detection script (recommended)
-├── 📄 main.py                   # Multi-camera orchestrator
-├── 📄 test_webcam.py           # Simple webcam test
-├── 📄 requirements.txt          # Python dependencies
-├── 📄 README.md                 # This file
-├── 📄 LICENSE                   # MIT License
-├── 📄 .gitignore               # Git ignore rules
+├── liftproof_v2.py          # Main detection script (recommended)
+├── main.py                   # Multi-camera orchestrator
+├── test_webcam.py           # Simple webcam test
+├── requirements.txt          # Python dependencies
+├── README.md                 # This file
+├── LICENSE                   # MIT License
+├── .gitignore               # Git ignore rules
 │
-├── 📁 config/
-│   └── 📄 settings.py          # Configuration settings
+├── config/
+│   └── settings.py          # Configuration settings
 │
-├── 📁 modules/
-│   ├── 📄 __init__.py
-│   ├── 📄 detection_engine.py  # Core detection logic
-│   ├── 📄 rtsp_loader.py       # CCTV stream handler
-│   └── 📄 notification_manager.py  # Alert system
+├── modules/
+│   ├── __init__.py
+│   ├── detection_engine.py  # Core detection logic
+│   ├── rtsp_loader.py       # CCTV stream handler
+│   └── notification_manager.py
 │
-├── 📁 models/                   # Trained models (git-ignored)
-│   └── 📄 .gitkeep
-│
-├── 📁 data/
-│   └── 📁 evidence/            # Captured alert images
-│
-├── 📁 logs/                     # Application logs
-│
-└── 📁 assets/                   # Documentation assets
-    └── 📄 demo.gif
+├── models/                   # Trained models (git-ignored)
+├── data/evidence/           # Captured alert images
+├── logs/                     # Application logs
+└── assets/                   # Documentation assets
 ```
 
 ---
@@ -370,9 +291,6 @@ LiftProofAI/
 - [ ] Web dashboard
 - [ ] Cloud deployment
 - [ ] Custom model training pipeline
-- [ ] Multi-camera view
-- [ ] Historical analytics
-- [ ] Integration with POS systems
 
 ---
 
@@ -381,57 +299,16 @@ LiftProofAI/
 Contributions are welcome! Here's how:
 
 1. **Fork** the repository
-2. **Create** your feature branch
-   ```bash
-   git checkout -b feature/AmazingFeature
-   ```
-3. **Commit** your changes
-   ```bash
-   git commit -m 'Add some AmazingFeature'
-   ```
-4. **Push** to the branch
-   ```bash
-   git push origin feature/AmazingFeature
-   ```
+2. **Create** your feature branch: `git checkout -b feature/AmazingFeature`
+3. **Commit** your changes: `git commit -m 'Add some AmazingFeature'`
+4. **Push** to the branch: `git push origin feature/AmazingFeature`
 5. **Open** a Pull Request
-
-### Development Setup
-
-```bash
-# Clone your fork
-git clone https://github.com/YOUR_USERNAME/LiftProofAI.git
-cd LiftProofAI
-
-# Create development environment
-python3 -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
-
-# Run tests
-python3 -m pytest tests/
-```
 
 ---
 
 ## 📄 License
 
-This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
-
-```
-MIT License
-
-Copyright (c) 2025 LiftProof.Ai
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-```
+This project is licensed under the **MIT License**
 
 ---
 
@@ -444,15 +321,12 @@ This software is intended for **legitimate security purposes only**. Users are r
 - Proper signage indicating video monitoring
 - Ethical use of the technology
 
-The developers are not responsible for misuse of this software.
-
 ---
 
 ## 📞 Support
 
-- **Issues**: [GitHub Issues](https://github.com/YOUR_USERNAME/LiftProofAI/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/YOUR_USERNAME/LiftProofAI/discussions)
-- **Email**: your.email@example.com
+- **Issues**: [GitHub Issues](https://github.com/Mrabbi3/LiftProofAI/issues)
+- **Email**: mrifat205@gmail.com
 
 ---
 
@@ -461,17 +335,9 @@ The developers are not responsible for misuse of this software.
 - [Ultralytics](https://github.com/ultralytics/ultralytics) - YOLOv8 framework
 - [OpenCV](https://opencv.org/) - Computer vision library
 - [Roboflow](https://roboflow.com/) - Dataset management
-- Research papers on behavioral analysis in retail security
 
 ---
 
-<div align="center">
-
 **Built with ❤️ for retail security**
 
-⭐ Star this repo if you find it useful!
-
-[Report Bug](https://github.com/YOUR_USERNAME/LiftProofAI/issues) • [Request Feature](https://github.com/YOUR_USERNAME/LiftProofAI/issues)
-
-</div>
-]]>
+⭐ **Star this repo if you find it useful!**
