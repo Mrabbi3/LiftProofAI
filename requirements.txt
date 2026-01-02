@@ -1,0 +1,32 @@
+# LiftProof.Ai - Dependencies
+# Install with: pip install -r requirements.txt
+
+# Core Computer Vision
+ultralytics>=8.1.0          # YOLOv8 framework
+opencv-python>=4.8.0        # Computer vision library
+numpy>=1.24.0               # Numerical computing
+
+# Deep Learning
+torch>=2.0.0                # PyTorch (auto-installed with ultralytics)
+torchvision>=0.15.0         # Vision utilities
+
+# Tracking
+lap>=0.4.0                  # Linear assignment for tracking
+
+# Utilities
+python-dotenv>=1.0.0        # Environment variables
+requests>=2.31.0            # HTTP requests
+Pillow>=10.0.0              # Image processing
+
+# Optional: Notifications (uncomment if needed)
+# firebase-admin>=6.3.0     # Firebase push notifications
+# twilio>=8.10.0            # SMS notifications
+
+# Optional: Web Dashboard (uncomment if needed)
+# flask>=3.0.0              # Web framework
+# flask-socketio>=5.3.0     # Real-time updates
+
+# Development (optional)
+# pytest>=7.4.0             # Testing
+# black>=23.0.0             # Code formatting
+# flake8>=6.1.0             # Linting
