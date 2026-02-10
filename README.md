@@ -1,5 +1,5 @@
-# 🛡️ LiftProof.Ai
-## 📋 Overview
+
+🌐 Live Website: https://liftproof-ai-website-7oediq4sy-md-s-projects-90825e24.vercel.app/
 
 **LiftProof.Ai** is an advanced real-time shoplifting detection system that uses YOLOv8-Pose for skeleton tracking combined with behavioral analysis algorithms to identify potential theft in retail environments. Unlike traditional object detection systems, LiftProof.Ai analyzes **human behavior patterns** to detect concealment actions before items leave the store.
 
